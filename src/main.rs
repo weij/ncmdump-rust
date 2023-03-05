@@ -266,5 +266,7 @@ fn process_file(path: &std::path::Path) -> std::io::Result<()> {
 fn main() {
     assert!(env::args().len() >= 2);
     let args: Vec<String> = env::args().collect();
-    process_file(std::path::Path::new(&args[1])).expect("process error at main:");
+    for arg in args[1..].iter() {
+        process_file(std::path::Path::new(arg)).expect("process error at main:");
+    }
 }
